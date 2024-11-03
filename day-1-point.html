@@ -27,15 +27,15 @@
 <body>
     <h1>Hello, World!</h1>
     <div id="map"></div>
-    <script>
+    <script type="module">
         var result = await fetch(
-    "https://overpass-api.de/api/interpreter",
-    {
-        method: "POST",
-        // The body contains the query
-        // to understand the query language see "The Programmatic Query Language" on
-        // https://wiki.openstreetmap.org/wiki/Overpass_API#The_Programmatic_Query_Language_(OverpassQL)
-        body: "data="+ encodeURIComponent(`
+            "https://overpass-api.de/api/interpreter",
+            {
+                method: "POST",
+                // The body contains the query
+                // to understand the query language see "The Programmatic Query Language" on
+                // https://wiki.openstreetmap.org/wiki/Overpass_API#The_Programmatic_Query_Language_(OverpassQL)
+                body: "data=" + encodeURIComponent(`
             [bbox:30.618338,-96.323712,30.591028,-96.330826]
             [out:json]
             [timeout:90]
@@ -51,12 +51,12 @@
             );
             out geom;
         `)
-    },
-).then(
-    (data)=>data.json()
-)
+            },
+        ).then(
+            (data) => data.json()
+        )
 
-console.log(JSON.stringify(result , null, 2))
+        console.log(JSON.stringify(result, null, 2))
     </script>
     <script>
         OSM.getFeature("node", 6049182299);
