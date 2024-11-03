@@ -56,10 +56,10 @@
             ).then(
                 (data) => data.json()
             )
-            let a= JSON.stringify(result, null, 2);
+            return JSON.stringify(result, null, 2);
         }
 
-        getPhoRestaurant();
+        let a=wait().getPhoRestaurant();
 
         console.log(a);
 
