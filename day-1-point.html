@@ -93,7 +93,7 @@ out geom;
             function addMarker(node) {
                 console.log(node)
                 let marker = new maplibregl.Marker()
-                    .setLngLat([node['lat'], node['lng']])
+                    .setLngLat([node['lat'], node['lon']])
                     .addTo(map);
             }
 
