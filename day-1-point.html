@@ -64,9 +64,9 @@ out geom;
 
             let data = await getPhoRestaurant();
 
-            data_element=data['elements']
+            let data_element=data['elements']
 
-            point =data_element.filter(d=>d.type=='node')
+            let point =data_element.filter(d=>d.type=='node')
 
             console.log(point);
 
