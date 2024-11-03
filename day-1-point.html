@@ -28,23 +28,35 @@
     <h1>Hello, World!</h1>
     <div id="map"></div>
     <script>
-        OSM.login({
-            mode: "redirect",
-            clientId: "	U_B6eciGS5ECE3pc6CqveKtMrI-UhkAOzaepDpMrlZw",
-            redirectUrl: "https://kaheetonaa.github.io/30-day-mapping-2024/land.html",
-        })
-            .then(() => {
-                console.log("User is now logged in!");
-            })
-            .catch(() => {
-                console.log("User cancelled the login, or there was an error");
-            });
+        var result = await fetch(
+    "https://overpass-api.de/api/interpreter",
+    {
+        method: "POST",
+        // The body contains the query
+        // to understand the query language see "The Programmatic Query Language" on
+        // https://wiki.openstreetmap.org/wiki/Overpass_API#The_Programmatic_Query_Language_(OverpassQL)
+        body: "data="+ encodeURIComponent(`
+            [bbox:30.618338,-96.323712,30.591028,-96.330826]
+            [out:json]
+            [timeout:90]
+            ;
+            (
+                way
+                    (
+                         30.626917110746,
+                         -96.348809105664,
+                         30.634468750236,
+                         -96.339893442898
+                     );
+            );
+            out geom;
+        `)
+    },
+).then(
+    (data)=>data.json()
+)
 
-        // you can check if a user is logged in using
-        OSM.isLoggedIn();
-
-        // and you can get the access_token using
-        OSM.getAuthToken();
+console.log(JSON.stringify(result , null, 2))
     </script>
     <script>
         OSM.getFeature("node", 6049182299);
