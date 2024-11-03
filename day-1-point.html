@@ -109,6 +109,8 @@ out geom;
                 el.style.width = `32px`;
                 el.style.height = `32px`;
                 el.style.zIndex=1;
+                el.style.borderRadius='50%';
+                el.style.backgroundColor='red';
 
                 let popup = new maplibregl.Popup({ offset: 25 }).setText(
                     'id:' + node['id'] + 'name:' + node['tags']['name']
