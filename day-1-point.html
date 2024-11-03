@@ -70,8 +70,18 @@ out geom;
 
             let data_element = data['elements']
             console.log(data['elements'][0]['type'],data)
+
+            let data_node=[]
+
+            let data_way=[]
+            
             for (let element in data_element) {
-                console.log(element)
+                if(data_element[element]['type']=='node'){
+                    console.log('node')
+                    data_node.push(data_element[element]);
+                } else if (data_element[element]['type']=='way') {
+                    data_way.push(data_element[element]);
+                }
             }
 
             OSM.getFeature("node", 6049182299);
