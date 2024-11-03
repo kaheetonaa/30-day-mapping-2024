@@ -66,13 +66,16 @@ out geom;
         }
 
         async function init() {
+            
+
+            let data = await getPhoRestaurant();
+
             const map = new maplibregl.Map({
                 container: 'map',
                 style:
                     'https://api.maptiler.com/maps/streets/style.json?key=LNYmt0VUZ6v0kH5DVUYX'
             });
-
-            let data = await getPhoRestaurant();
+            
 
             let data_element = data['elements']
 
