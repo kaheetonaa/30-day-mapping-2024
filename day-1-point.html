@@ -20,12 +20,13 @@
         body,
         #map {
             height: 100%;
+            z-index=1;
         }
     </style>
 </head>
 
 <body>
-    <h1>Phở in Hà Nội</h1>
+    <h1 id="title">Phở in Hà Nội (loading)</h1>
     <div id="map"></div>
     <script>
         //button for async function 
@@ -105,6 +106,8 @@ out geom;
                     `url(https://kaheetonaa.github.io/30-day-mapping-2024/asset/phobo_ico.png)}/)`;
                 el.style.width = `32px`;
                 el.style.height = `32px`;
+                el.style.zIndex=5;
+                el.style.backgroundColor='red';
 
                 let popup = new maplibregl.Popup({ offset: 25 }).setText(
                     'id:' + node['id'] + 'name:' + node['tags']['name']
