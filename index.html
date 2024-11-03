@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pho restaurant</title>
+    <meta property="og:description"
+        content="Add an icon to the map from an external URL and use it in a symbol layer." />
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/osm-api@2"></script>
+    <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css' />
+    <script src='https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js'></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body,
+        #map {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hello, World!</h1>
+    <div id="map"></div>
+    <script>
+        OSM.login({
+            mode: "popup",
+            clientId: ".......",
+            redirectUrl: "https://example.com/land.html",
+        })
+            .then(() => {
+                console.log("User is now logged in!");
+            })
+            .catch(() => {
+                console.log("User cancelled the login, or there was an error");
+            });
+
+        // you can check if a user is logged in using
+        OSM.isLoggedIn();
+
+        // and you can get the access_token using
+        OSM.getAuthToken();
+    </script>
+    <script>
+        OSM.getMapData([
+  /* minLng */ 1, /* minLat */ 2, /* maxLng */ 3, /* maxLat */ 4,
+        ]);
+        OSM.getFeature("node", 6049182299);
+
+        const map = new maplibregl.Map({
+            container: 'map',
+            style:
+                'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL'
+        });
+
+
+    </script>
+</body>
+
+</html>
