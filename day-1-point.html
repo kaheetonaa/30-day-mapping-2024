@@ -84,12 +84,13 @@ out geom;
 
             for (let element in data_element) {
                 if (data_element[element]['type'] == 'node') {
-                    console.log('node')
                     data_node.push(data_element[element]);
                 } else if (data_element[element]['type'] == 'way') {
                     data_way.push(data_element[element]);
                 }
             }
+
+            console.log(data_node)
 
             data_node.forEach(addMarker)
 
