@@ -56,12 +56,12 @@
             ).then(
                 (data) => data.json()
             )
-            return JSON.stringify(result, null, 2);
+            let a= JSON.stringify(result, null, 2);
         }
 
-        let a=getPhoRestaurant();
+        getPhoRestaurant();
 
-        console.log(a)
+        console.log(a);
 
 
         OSM.getFeature("node", 6049182299);
