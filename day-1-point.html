@@ -69,14 +69,12 @@ out geom;
             let data = await getPhoRestaurant();
 
             let data_element = data['elements']
-            console.log(data_element)
+            console.log(data['elements'],data)
             for (let element in data_element) {
                 if (element['type'] == 'node') {
                     console.log('node')
                 }
             }
-
-            console.log(point);
 
             OSM.getFeature("node", 6049182299);
 
