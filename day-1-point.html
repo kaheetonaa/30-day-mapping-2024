@@ -20,7 +20,7 @@
         body,
         #map {
             height: 100%;
-            z-index:1;
+            z-index:0;
         }
     </style>
 </head>
@@ -105,8 +105,7 @@ out geom;
                     `url(https://kaheetonaa.github.io/30-day-mapping-2024/asset/phobo_ico.png)}/)`;
                 el.style.width = `32px`;
                 el.style.height = `32px`;
-                el.style.zIndex=5;
-                el.style.backgroundColor='red';
+                el.style.zIndex=1;
 
                 let popup = new maplibregl.Popup({ offset: 25 }).setText(
                     'id:' + node['id'] + 'name:' + node['tags']['name']
