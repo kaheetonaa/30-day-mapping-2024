@@ -59,9 +59,15 @@
             return JSON.stringify(result, null, 2);
         }
 
-        //let a=await getPhoRestaurant();
+function init() {
 
-        //console.log(a);
+        let a=await getPhoRestaurant();
+
+        console.log(a);
+
+}
+
+init();
 
 
         OSM.getFeature("node", 6049182299);
