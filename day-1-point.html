@@ -28,6 +28,10 @@
     <h1>Phở in Hà Nội</h1>
     <div id="map"></div>
     <script>
+        //button for async function 
+        //document.getElementById("idButton").onclick=async() => {
+        //await promiseExample();
+        //};
         async function getPhoRestaurant() {
             var result = await fetch(
                 "https://overpass-api.de/api/interpreter",
@@ -64,10 +68,10 @@ out geom;
 
             let data = await getPhoRestaurant();
 
-            let data_element=data['elements']
+            let data_element = data['elements']
 
             for (let element in data_element) {
-                if (element.type=='node'){
+                if (element.type == 'node') {
                     console.log('node')
                 }
             }
