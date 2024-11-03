@@ -70,6 +70,7 @@ out geom;
             const map = new maplibregl.Map({
                 container: 'map',
                 pitch: 45,
+                dragPan:false,
                 style:
                     'https://api.maptiler.com/maps/streets/style.json?key=LNYmt0VUZ6v0kH5DVUYX'
             });
@@ -122,6 +123,8 @@ out geom;
             let map_bound = turf.bbox(turf.lineString(dummy_line))
 
             map.fitBounds(map_bound)
+
+            map.dragPan.enable()
 
             document.getElementById('title').innerHTML='Phở in Hà Nội';
 
