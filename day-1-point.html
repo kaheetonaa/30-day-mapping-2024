@@ -61,7 +61,7 @@ out geom;
             ).then(
                 (data) => data.json()
             )
-            return JSON.stringify(result, null, 2);
+            return JSON.parse(result);
         }
 
         async function init() {
