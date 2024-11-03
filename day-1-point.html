@@ -102,10 +102,11 @@ out geom;
                 let el = document.createElement('div');
                 el.className = 'marker';
                 el.style.backgroundImage =
-                    `url(https://kaheetonaa.github.io/30-day-mapping-2024/asset/phobo_ico.png)}/)`;
+                    `url(https://kaheetonaa.github.io/30-day-mapping-2024/asset/phobo_ico.png)`;
                 el.style.width = `32px`;
                 el.style.height = `32px`;
                 el.style.zIndex=1;
+                el.style.backgroundColor='red';
 
                 let popup = new maplibregl.Popup({ offset: 25 }).setText(
                     'id:' + node['id'] + 'name:' + node['tags']['name']
