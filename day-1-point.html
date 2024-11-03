@@ -71,7 +71,7 @@ out geom;
                 style:
                     'https://api.maptiler.com/maps/streets/style.json?key=LNYmt0VUZ6v0kH5DVUYX'
             });
-            
+
 
             let data = await getPhoRestaurant();
 
@@ -98,19 +98,30 @@ out geom;
             data_node.forEach(addMarker)
 
             function addMarker(node) {
+                const el = document.createElement('div');
+                el.className = 'marker';
+                el.style.backgroundImage =
+                    `url(https://kaheetonaa.github.io/30-day-mapping-2024/asset/phobo_ico.png)}/)`;
+                el.style.width = `${marker.properties.iconSize[0]}px`;
+                el.style.height = `${marker.properties.iconSize[1]}px`;
+
+                el.addEventListener('click', () => {
+                    window.alert(marker.properties.message);
+                });
+
                 let popup = new maplibregl.Popup({ offset: 25 }).setText(
-                    'id:'+node['id']+'name:'+node['tags']['name']
+                    'id:' + node['id'] + 'name:' + node['tags']['name']
                 );
 
                 let lonlat = [node['lon'], node['lat']]
                 dummy_line.push(lonlat)
-                let marker = new maplibregl.Marker()
+                let marker = new maplibregl.Marker({element:el})
                     .setLngLat(lonlat)
                     .setPopup(popup)
                     .addTo(map);
             }
 
-            let map_bound=turf.bbox(turf.lineString(dummy_line))
+            let map_bound = turf.bbox(turf.lineString(dummy_line))
 
             map.fitBounds(map_bound)
 
