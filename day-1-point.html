@@ -62,7 +62,9 @@ out geom;
 
         async function init() {
 
-            let point = await getPhoRestaurant();
+            let data = await getPhoRestaurant();
+
+            point = data['elements'].filter(d=>d.type=='node')
 
             console.log(point);
 
