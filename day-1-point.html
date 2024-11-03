@@ -79,6 +79,8 @@ out geom;
 
             let data_way = []
 
+            let map_bound=[]
+
             for (let element in data_element) {
                 if (data_element[element]['type'] == 'node') {
                     console.log('node')
@@ -91,11 +93,14 @@ out geom;
             data_node.forEach(addMarker)
 
             function addMarker(node) {
-                console.log(node)
+                let lonlat=[node['lon'], node['lat']]
+                map_bound.push(lonlat)
                 let marker = new maplibregl.Marker()
-                    .setLngLat([node['lon'], node['lat']])
+                    .setLngLat(latlon)
                     .addTo(map);
             }
+
+            map.fitBounds(map_bound)
 
 
 
