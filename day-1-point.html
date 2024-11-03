@@ -96,7 +96,7 @@ out geom;
                 let lonlat=[node['lon'], node['lat']]
                 map_bound.push(lonlat)
                 let marker = new maplibregl.Marker()
-                    .setLngLat(latlon)
+                    .setLngLat(lonlat)
                     .addTo(map);
             }
 
