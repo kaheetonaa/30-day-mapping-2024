@@ -66,7 +66,11 @@ out geom;
 
             let data_element=data['elements']
 
-            let point =data_element.filter(d=>d.type=='node')
+            for (let element in data_element) {
+                if (element.type=='node'){
+                    console.log('node')
+                }
+            }
 
             console.log(point);
 
