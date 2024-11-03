@@ -66,7 +66,7 @@ out geom;
         }
 
         async function init() {
-            
+
 
             let data = await getPhoRestaurant();
 
@@ -99,12 +99,11 @@ out geom;
 
             function addMarker(node) {
                 let popup = new maplibregl.Popup({ offset: 25 }).setText(
-                    'id:'+node['id']+'name:'+node['name']
+                    'id:'+node['id']+'name:'+node['tags']['name']
                 );
 
                 let lonlat = [node['lon'], node['lat']]
                 dummy_line.push(lonlat)
-                console.log(dummy_line)
                 let marker = new maplibregl.Marker()
                     .setLngLat(lonlat)
                     .setPopup(popup)
@@ -112,7 +111,6 @@ out geom;
             }
 
             let map_bound=turf.bbox(turf.lineString(dummy_line))
-            console.log(map_bound)
 
             map.fitBounds(map_bound)
 
