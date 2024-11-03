@@ -95,7 +95,7 @@ out geom;
 
             function addMarker(node) {
                 let popup = new maplibregl.Popup({ offset: 25 }).setText(
-                    '<b>id:</b>'+node['id']+'<br><b>name:</b>'+node['name']
+                    'id:'+node['id']+'name:'+node['name']
                 );
 
                 let lonlat = [node['lon'], node['lat']]
