@@ -77,8 +77,6 @@ out geom;
 
             let data = await getPhoRestaurant();
 
-
-
             let data_element = data['elements']
 
             let data_node = []
@@ -124,6 +122,8 @@ out geom;
             let map_bound = turf.bbox(turf.lineString(dummy_line))
 
             map.fitBounds(map_bound)
+
+            document.getElementById('title').innerHTML='Phở in Hà Nội'
 
         }
 
