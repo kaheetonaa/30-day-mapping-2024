@@ -28,7 +28,7 @@
     <h1>Hello, World!</h1>
     <div id="map"></div>
     <script type="module">
-        var result = await fetch(
+        export var result = await fetch(
             "https://overpass-api.de/api/interpreter",
             {
                 method: "POST",
@@ -55,7 +55,6 @@
         ).then(
             (data) => data.json()
         )
-        export result;
 
     </script>
     <script>
