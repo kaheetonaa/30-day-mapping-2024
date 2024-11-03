@@ -51,8 +51,9 @@ The original search was:
 area(id:3601903516)->.searchArea;
 // gather results
 (
-  nwr["amenity"="restaurant"]["cuisine"="vietnamese"]["name"~"Phở"](area.searchArea);
-  nwr["amenity"="restaurant"]["cuisine"="vietnamese"]["name"~"phở"](area.searchArea);
+  n["name"~"Phở"](area.searchArea);
+  n["name"~"phở"](area.searchArea);
+  n["cuisine"~"phở"](area.searchArea);
 );
 // print results
 out geom;
@@ -94,13 +95,14 @@ out geom;
 
             function addMarker(node) {
                 let lonlat=[node['lon'], node['lat']]
-                map_bound.push(lonlat)
+                //map_bound.push(lonlat)
+                //console.log(map_bound)
                 let marker = new maplibregl.Marker()
                     .setLngLat(lonlat)
                     .addTo(map);
             }
 
-            map.fitBounds(map_bound)
+            //map.fitBounds(map_bound)
 
 
 
