@@ -37,19 +37,14 @@
                     // to understand the query language see "The Programmatic Query Language" on
                     // https://wiki.openstreetmap.org/wiki/Overpass_API#The_Programmatic_Query_Language_(OverpassQL)
                     body: "data=" + encodeURIComponent(`
-            [bbox:30.618338,-96.323712,30.591028,-96.330826]
-            [out:json]
-            [timeout:90]
-            ;
+                        [out:json][timeout:25];
+            // gather results
             (
-                way
-                    (
-                         30.626917110746,
-                         -96.348809105664,
-                         30.634468750236,
-                         -96.339893442898
-                     );
+            node["cuisine"~"phở"]({{bbox}});
+            node["name"~"phở"]({{bbox}});
+            node["name"~"Phở"]({{bbox}});
             );
+            // print results
             out geom;
         `)
                 },
