@@ -28,7 +28,7 @@
     <h1>Hello, World!</h1>
     <div id="map"></div>
     <script>
-        (async () => {
+        async function getPhoRestaurant {
             var result = await fetch(
                 "https://overpass-api.de/api/interpreter",
                 {
@@ -56,9 +56,13 @@
             ).then(
                 (data) => data.json()
             )
-            console.log(JSON.stringify(result, null, 2));
+            return JSON.stringify(result, null, 2);
+        }
 
-        })()
+        a=getPhoRestaurant();
+
+        console.log(a)
+
 
         OSM.getFeature("node", 6049182299);
 
