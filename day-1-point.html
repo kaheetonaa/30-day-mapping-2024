@@ -65,33 +65,39 @@ out geom;
         }
 
         async function init() {
-
-            let data = await getPhoRestaurant();
-
-            let data_element = data['elements']
-
-            let data_node=[]
-
-            let data_way=[]
-            
-            for (let element in data_element) {
-                if(data_element[element]['type']=='node'){
-                    console.log('node')
-                    data_node.push(data_element[element]);
-                } else if (data_element[element]['type']=='way') {
-                    data_way.push(data_element[element]);
-                }
-            }
-
-            console.log(data_way,data_node)
-
-            OSM.getFeature("node", 6049182299);
-
             const map = new maplibregl.Map({
                 container: 'map',
                 style:
                     'https://api.maptiler.com/maps/streets/style.json?key=LNYmt0VUZ6v0kH5DVUYX'
             });
+
+            let data = await getPhoRestaurant();
+
+            let data_element = data['elements']
+
+            let data_node = []
+
+            let data_way = []
+
+            for (let element in data_element) {
+                if (data_element[element]['type'] == 'node') {
+                    console.log('node')
+                    data_node.push(data_element[element]);
+                } else if (data_element[element]['type'] == 'way') {
+                    data_way.push(data_element[element]);
+                }
+            }
+
+            data_node.forEach(addMarker)
+
+            function addMarker(node) {
+                console.log(node)
+                let marker = new maplibregl.Marker()
+                    .setLngLat([node['lat'], node['lng']])
+                    .addTo(map);
+            }
+
+
 
         }
 
