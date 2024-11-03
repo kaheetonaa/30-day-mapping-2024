@@ -7,7 +7,7 @@
         content="Add an icon to the map from an external URL and use it in a symbol layer." />
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@7/turf.min.js"></script>
     <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css' />
     <script src='https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js'></script>
     <style>
@@ -80,7 +80,7 @@ out geom;
 
             let data_way = []
 
-            let map_bound = []
+            let dummy_line = []
 
             for (let element in data_element) {
                 if (data_element[element]['type'] == 'node') {
@@ -99,15 +99,16 @@ out geom;
                 );
 
                 let lonlat = [node['lon'], node['lat']]
-                //map_bound.push(lonlat)
-                //console.log(map_bound)
+                dummy_line.push(lonlat)
                 let marker = new maplibregl.Marker()
                     .setLngLat(lonlat)
                     .setPopup(popup)
                     .addTo(map);
             }
 
-            //map.fitBounds(map_bound)
+            let map_bound=turf.bbox(turf.lineString(dummy_line))
+
+            map.fitBounds(map_bound)
 
 
 
