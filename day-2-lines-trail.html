@@ -149,7 +149,7 @@
                     startTime = performance.now() - progress;
                     resetTime = false;
                 } else {
-                    progress = timestamp - startTime;
+                    progress = (timestamp - startTime)*speedFactor;
                     console.log(progress)
                 }
                 // restart if it finishes a loop
