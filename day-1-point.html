@@ -21,6 +21,7 @@
         #map {
             height: 100%;
             z-index:0;
+            visibility: hidden;
         }
         .maplibregl-popup{
             z-index:5;
@@ -124,9 +125,12 @@ out geom;
 
             map.fitBounds(map_bound)
 
+            map.setMaxBounds(map_bound)
+
             map.dragPan.enable()
 
             document.getElementById('title').innerHTML='Phở in Hà Nội';
+            document.getElementById('map').style.visibility='visible';
 
         }
 
