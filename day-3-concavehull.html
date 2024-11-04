@@ -123,6 +123,8 @@ out geom;
                 dummy_line.push(lonlat)
             }
 
+            let options = { units: "kilometers", maxEdge: 1 };
+
             let hull = turf.concave(points, options);
 
             map.addSource('hull', {
