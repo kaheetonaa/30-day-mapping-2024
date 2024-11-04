@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/osm-api@2"></script>
+</head>
+
+<body>
+    <script>
+        OSM.login({
+            mode: "popup",
+            clientId: "qMoWHp_3M7QjZqr5Sw1JieVSibGB5p71T_QU6fiRUok",
+            redirectUrl: "https://kaheetonaa.github.io/30-day-mapping-2024/land.html",
+        })
+            .then(() => {
+                console.log("User is now logged in!");
+            })
+            .catch(() => {
+                console.log("User cancelled the login, or there was an error");
+            });
+
+        // you can check if a user is logged in using
+        OSM.isLoggedIn();
+
+        // and you can get the access_token using
+        OSM.getAuthToken();
+    </script>
+</body>
+
+</html>
