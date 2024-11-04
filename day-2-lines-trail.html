@@ -50,9 +50,9 @@
         });
 
         // Create a GeoJSON source with an empty lineString.
-        
 
-        let data_trail={}
+
+        let data_trail = {}
 
         const speedFactor = 30; // number of frames per longitude degree
         let animation; // to store and cancel the animation
@@ -75,12 +75,13 @@
                 console.error(error.message);
             }
         }
-        async function add_Data() {
-            data_trail= await getData()
-            
-        }
-        add_Data();
-        console.log(data_trail['path'])       
+        process();
+
+        async function process() {
+            data_trail = await getData()
+
+
+        console.log(data_trail['path'])
 
         const geojson = {
             'type': 'FeatureCollection',
@@ -165,6 +166,7 @@
                 animation = requestAnimationFrame(animateLine);
             }
         });
+    }
     </script>
 </body>
 
