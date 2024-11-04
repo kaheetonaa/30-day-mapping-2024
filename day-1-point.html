@@ -131,7 +131,7 @@ out geom;
             }
 
             let map_bound = turf.bbox(turf.lineString(dummy_line))
-            let map_max_bound = turf.bbox(turf.buffer(turf.bboxPolygon(map_bound),1,{units:'kilometers'}));
+            let map_max_bound = turf.bbox(turf.buffer(turf.bboxPolygon(map_bound),10,{units:'kilometers'}));
 
             map.fitBounds(map_bound)
 
