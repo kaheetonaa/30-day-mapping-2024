@@ -128,11 +128,11 @@ out geom;
 
             let hull = turf.concave(turf.featureCollection(points), options);
 
-            console.log(turf.featureCollection(points))
+            console.log(hull)
 
             map.addSource('hull', {
                 'type': 'geojson',
-                'data': { hull }
+                'data': {hull}
             })
 
             map.addLayer({
