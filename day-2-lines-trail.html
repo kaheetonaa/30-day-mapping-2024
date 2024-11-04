@@ -81,8 +81,9 @@
         
         data_trail = await getData()
 
-
         console.log(data_trail)
+
+        console.log(data_trail['_embedded']['coordinates']['items'])
 
         let geojson = {
             'type': 'FeatureCollection',
@@ -151,7 +152,7 @@
                 }
 
                 // restart if it finishes a loop
-                if (progress > speedFactor * 360) {
+                if (progress > 2516482) {
                     startTime = timestamp;
                     geojson.features[0].geometry.coordinates = [[data_trail['start_point']['lng'], data_trail['start_point']['lat']]];
                 } else {
