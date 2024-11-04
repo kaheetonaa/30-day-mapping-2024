@@ -25,10 +25,10 @@
             // authenticated yet.
             auth.xhr({ method: "GET", path: "/api/0.6/user/details" },
                 function (err, result) {
-                    // result is an XML DOM containing the user details
+                    console.log(result)
                 }
             );
-            console.log(auth)
+            
         };
     </script>
 </body>
