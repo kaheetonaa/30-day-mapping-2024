@@ -61,7 +61,7 @@
         let resetTime = false; // indicator of whether time reset is needed for the animation
         const pauseButton = document.getElementById('pause');
 
-        async function getData(data) {
+        async function getData() {
             const url = "https://www.komoot.com/api/v007/discover_tours/e864436644?_embedded=coordinates%2Cway_types%2Csurfaces%2Ctimeline&_embedded.timeline.reference=recommenders%2Crating_stats&hl=en";
             try {
                 const response = await fetch(url);
@@ -69,14 +69,17 @@
                     throw new Error(`Response status: ${response.status}`);
                 }
 
-                data = await response.json();
-                return data
+                let json = await response.json();
+                return json
             } catch (error) {
                 console.error(error.message);
             }
         }
-        getData(data_trail)
-        console.log(data_trail)
+        async function add_Data() {
+            data_trail= await getData()
+            console.log(data_trail)
+        }
+        add_Data();        
 
         const geojson = {
             'type': 'FeatureCollection',
