@@ -18,7 +18,7 @@
         body,
         #map {
             height: 100%;
-            z-index:0;
+            z-index: 0;
         }
     </style>
 </head>
@@ -29,7 +29,7 @@
             position:absolute;
             top:25px;
             left:20px;
-            z-index:5;
+            z-index: 5;
         }
         button {
             position: absolute;
@@ -49,6 +49,15 @@
     <div id="map"></div>
     <button id="pause"></button>
     <script>
+        const map = new maplibregl.Map({
+            container: 'map',
+            style:
+                'https://api.maptiler.com/maps/c3f88dfa-302d-454a-848c-0c79ca28b930/style.json?key=fTquHLsOc7W9XJAo9yfK',
+            center: [9.294041, 45.468468],
+            pitch:45,
+            zoom: 15
+        });
+
         // Create a GeoJSON source with an empty lineString.
 
 
@@ -85,15 +94,6 @@
         console.log(data_trail)
 
         coord_trail=data_trail['_embedded']['coordinates']['items']
-
-        const map = new maplibregl.Map({
-            container: 'map',
-            style:
-                'https://api.maptiler.com/maps/c3f88dfa-302d-454a-848c-0c79ca28b930/style.json?key=fTquHLsOc7W9XJAo9yfK',
-            center: [[coord_trail[0]['lng'], coord_trail[0]['lat']]],
-            pitch:45,
-            zoom: 15
-        });
 
         let geojson = {
             'type': 'FeatureCollection',
