@@ -24,10 +24,15 @@
 
 <body>
     <style>
+        .id {
+            position:absolute;
+            top:25px;
+            left:20px
+        }
         button {
             position: absolute;
-            top: 0;
-            margin: 20px;
+            top: 50px;
+            left: 20px;
         }
 
         #pause::after {
@@ -38,6 +43,7 @@
             content: 'Play';
         }
     </style>
+    <h1 id="title">Ring of the Idroscalo of Milan - by Komoot</h1>
     <div id="map"></div>
     <button id="pause"></button>
     <script>
@@ -46,6 +52,7 @@
             style:
                 'https://api.maptiler.com/maps/c3f88dfa-302d-454a-848c-0c79ca28b930/style.json?key=fTquHLsOc7W9XJAo9yfK',
             center: [9.294041, 45.468468],
+            pitch:45,
             zoom: 15
         });
 
