@@ -126,7 +126,7 @@ out geom;
 
             let options = { units: "kilometers", maxEdge: 1 };
 
-            let hull = turf.concave(points, options);
+            let hull = turf.concave(turf.featureCollection(points), options);
 
             console.log(hull)
 
