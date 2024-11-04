@@ -55,7 +55,7 @@
         let data_trail = {}
         let step=0
 
-        const speedFactor = 30; // number of frames per longitude degree
+        const speedFactor = 100; // number of frames per longitude degree
         let animation; // to store and cancel the animation
         let startTime = 0;
         let progress = 0; // progress = timestamp - startTime
@@ -93,7 +93,7 @@
                     'type': 'Feature',
                     'geometry': {
                         'type': 'LineString',
-                        'coordinates': [[data_trail['start_point']['lng'], data_trail['start_point']['lat']]]
+                        'coordinates': [[coord_trail[0]['lng'], coord_trail[0]['lat']]]
                     }
                 }
             ]
@@ -155,7 +155,7 @@
                 // restart if it finishes a loop
                 if (progress > 2516482) {
                     startTime = timestamp;
-                    geojson.features[0].geometry.coordinates = [[data_trail['start_point']['lng'], data_trail['start_point']['lat']]];
+                    geojson.features[0].geometry.coordinates = [[coord_trail[0]['lng'], coord_trail[0]['lat']]];
                     step=0;
                 } else {
                     if (progress>coord_trail[step]['t']){
