@@ -75,7 +75,7 @@ out geom;
                 pitch: 45,
                 dragPan:false,
                 style:
-                    'https://api.maptiler.com/maps/c3f88dfa-302d-454a-848c-0c79ca28b930/style.json?key=fTquHLsOc7W9XJAo9yfK'
+                    'https://api.maptiler.com/maps/b3be053d-d0ae-4eb9-87ae-1a3b68a6cba4/style.json?key=fTquHLsOc7W9XJAo9yfK'
             });
 
 
@@ -105,10 +105,9 @@ out geom;
                 let el = document.createElement('div');
                 el.className = 'marker';
                 el.style.zIndex=1;
-                el.style.backgroundImage='asset/phobo_ico.png';
+                el.style.backgroundImage='url(https://kaheetonaa.github.io/30-day-mapping-2024/asset/phobo-ico.png)';
                 el.style.width='32px';
                 el.style.height='32px';
-                el.style.backgroundColor='red';
                 let popup = new maplibregl.Popup({ offset: 25 }).setText(
                     'id:' + node['id'] + 'name:' + node['tags']['name']
                 );
