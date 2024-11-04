@@ -1,6 +1,6 @@
 # 30 day map challenge 2024
 by Quang Huy NGUYEN
-* Points: https://kaheetonaa.github.io/30-day-mapping-2024/day-1-point.html
+* [Points](https://kaheetonaa.github.io/30-day-mapping-2024/day-1-point.html)
 * Lines: 
 * Polygons
 * Hexagons
