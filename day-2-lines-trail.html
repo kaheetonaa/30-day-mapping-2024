@@ -53,6 +53,7 @@
 
 
         let data_trail = {}
+        let step=0
 
         const speedFactor = 30; // number of frames per longitude degree
         let animation; // to store and cancel the animation
@@ -83,7 +84,7 @@
 
         console.log(data_trail)
 
-        console.log(data_trail['_embedded']['coordinates']['items'])
+        coord_trail=data_trail['_embedded']['coordinates']['items']
 
         let geojson = {
             'type': 'FeatureCollection',
@@ -156,11 +157,13 @@
                     startTime = timestamp;
                     geojson.features[0].geometry.coordinates = [[data_trail['start_point']['lng'], data_trail['start_point']['lat']]];
                 } else {
-                    const x = progress / speedFactor;
-                    // draw a sine wave with some math.
-                    const y = Math.sin((x * Math.PI) / 90) * 40;
-                    // append new coordinates to the lineString
-                    geojson.features[0].geometry.coordinates.push([x, y]);
+                    if (process>coord_trail[step]['t']){
+                        let x = coord_trail[step+1]['lng']
+                        let y = coord_trail[step+1]['lat']
+                        geojson.features[0].geometry.coordinates.push([x, y]);
+                        step=step+1
+                    }
+                    
                     // then update the map
                     map.getSource('line').setData(geojson);
                 }
