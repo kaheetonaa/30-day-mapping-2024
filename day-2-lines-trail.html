@@ -78,12 +78,13 @@
         process();
 
         async function process() {
-            data_trail = await getData()
+        
+        data_trail = await getData()
 
 
-        console.log(data_trail['path'])
+        console.log(data_trail)
 
-        const geojson = {
+        let geojson = {
             'type': 'FeatureCollection',
             'features': [
                 {
@@ -152,7 +153,7 @@
                 // restart if it finishes a loop
                 if (progress > speedFactor * 360) {
                     startTime = timestamp;
-                    geojson.features[0].geometry.coordinates = [];
+                    geojson.features[0].geometry.coordinates = [[data_trail['start_point']['lng'], data_trail['start_point']['lat']]];
                 } else {
                     const x = progress / speedFactor;
                     // draw a sine wave with some math.
