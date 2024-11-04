@@ -77,9 +77,10 @@
         }
         async function add_Data() {
             data_trail= await getData()
-            console.log(data_trail)
+            
         }
-        add_Data();        
+        add_Data();
+        console.log(data_trail)       
 
         const geojson = {
             'type': 'FeatureCollection',
@@ -88,7 +89,7 @@
                     'type': 'Feature',
                     'geometry': {
                         'type': 'LineString',
-                        'coordinates': [[0, 0]]
+                        'coordinates': [[data_trail['start_point']['lng'], data_trail['start_point']['lat']]]
                     }
                 }
             ]
