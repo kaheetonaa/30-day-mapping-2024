@@ -123,16 +123,19 @@
                     }
 
                     const json = await response.json();
-                    console.log(json);
+                    //console.log(json);
+                    return json;
                 } catch (error) {
                     console.error(error.message);
                 }
             }
 
-            getData();
+            
 
             // animated in a circle as a sine wave along the map.
             async function animateLine(timestamp) {
+                trail_data=await getData();
+                console.log(trail_data)
                 if (resetTime) {
                     // resume previous progress
                     startTime = performance.now() - progress;
