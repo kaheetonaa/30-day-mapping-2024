@@ -50,20 +50,9 @@
         });
 
         // Create a GeoJSON source with an empty lineString.
-        const geojson = {
-            'type': 'FeatureCollection',
-            'features': [
-                {
-                    'type': 'Feature',
-                    'geometry': {
-                        'type': 'LineString',
-                        'coordinates': [[0, 0]]
-                    }
-                }
-            ]
-        };
+        
 
-        var data_trail={}
+        let data_trail={}
 
         const speedFactor = 30; // number of frames per longitude degree
         let animation; // to store and cancel the animation
@@ -80,15 +69,27 @@
                     throw new Error(`Response status: ${response.status}`);
                 }
 
-                const json = await response.json();
-                //console.log(json);
-                data= json;
+                data = await response.json();
+                return data
             } catch (error) {
                 console.error(error.message);
             }
         }
         getData(data_trail)
         console.log(data_trail)
+
+        const geojson = {
+            'type': 'FeatureCollection',
+            'features': [
+                {
+                    'type': 'Feature',
+                    'geometry': {
+                        'type': 'LineString',
+                        'coordinates': [[0, 0]]
+                    }
+                }
+            ]
+        };
 
         map.on('load', () => {
             map.addSource('line', {
