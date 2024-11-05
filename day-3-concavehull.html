@@ -117,7 +117,7 @@ out geom;
             }
             console.log(points)
 
-            let options = { units: "kilometers", maxEdge: 3 };
+            let options = { units: "kilometers", maxEdge: 2 };
 
             let hull = turf.concave(turf.featureCollection(points), options);
             let map_bound = turf.bbox(turf.lineString(dummy_line))
