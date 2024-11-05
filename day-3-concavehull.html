@@ -124,6 +124,7 @@ out geom;
             let map_max_bound = turf.bbox(turf.buffer(turf.bboxPolygon(map_bound), 10, { units: 'kilometers' }));
 
             console.log(hull)
+            console.log(map_max_bound)
 
             var map = L.map('map').fitBounds([[map_max_bound[0], map_max_bound[1]], [map_max_bound[2], map_max_bound[3]]]);
 
