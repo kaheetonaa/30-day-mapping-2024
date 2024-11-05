@@ -126,7 +126,7 @@ out geom;
             console.log(hull)
             console.log(map_max_bound)
 
-            var map = L.map('map').fitBounds([[map_max_bound[0], map_max_bound[1]], [map_max_bound[2], map_max_bound[3]]]);
+            var map = L.map('map').fitBounds([[map_max_bound[1], map_max_bound[0]], [map_max_bound[3], map_max_bound[2]]]);
 
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
