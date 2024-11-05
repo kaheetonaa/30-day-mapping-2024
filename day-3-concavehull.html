@@ -8,8 +8,10 @@
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.jsdelivr.net/npm/@turf/turf@7/turf.min.js"></script>
-    <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css' />
-    <script src='https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js'></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <style>
         body {
             margin: 0;
@@ -83,15 +85,6 @@ out geom;
         }
 
         async function init() {
-            const map = new maplibregl.Map({
-                container: 'map',
-                pitch: 45,
-                dragPan: false,
-                style:
-                    'https://api.maptiler.com/maps/c3f88dfa-302d-454a-848c-0c79ca28b930/style.json?key=fTquHLsOc7W9XJAo9yfK'
-            });
-
-
             let data = await getPhoRestaurant();
 
             let data_element = data['elements']
@@ -127,34 +120,14 @@ out geom;
             let options = { units: "kilometers", maxEdge: 1 };
 
             let hull = turf.concave(turf.featureCollection(points), options);
+            let map_bound = turf.bbox(turf.lineString(dummy_line))
+            let map_max_bound = turf.bbox(turf.buffer(turf.bboxPolygon(map_bound),10,{units:'kilometers'}));
 
             console.log(hull)
 
-            map.addSource('hull', {
-                'type': 'geojson',
-                'data': {hull}
-            })
+            var map = L.map('map').fitBounds(map_max_bound);
 
-            map.addLayer({
-                'id': 'hull',
-                'type': 'fill',
-                'source': 'hull',
-                'layout': {},
-                'paint': {
-                    'fill-color': '#088',
-                    'fill-opacity': 0.8
-                },
-                'filter': ['==', '$type', 'Polygon']
-            });
-
-            let map_bound = turf.bbox(turf.lineString(dummy_line))
-            let map_max_bound = turf.bbox(turf.buffer(turf.bboxPolygon(map_bound), 10, { units: 'kilometers' }));
-
-            map.fitBounds(map_bound)
-
-            map.setMaxBounds(map_max_bound)
-
-            map.dragPan.enable()
+            L.geoJSON(hull).addTo(map);
 
             document.getElementById('title').innerHTML = 'Phở in Hà Nội';
             document.getElementById('map').style.visibility = 'visible';
