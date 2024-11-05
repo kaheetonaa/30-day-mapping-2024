@@ -117,7 +117,7 @@ out geom;
             }
             console.log(points)
 
-            let options = { units: "kilometers", maxEdge: 1 };
+            let options = { units: "kilometers", maxEdge: 2 };
 
             let hull = turf.concave(turf.featureCollection(points), options);
             let map_bound = turf.bbox(turf.lineString(dummy_line))
@@ -138,9 +138,21 @@ out geom;
                 "color": "#ff0000",
                 "opacity": 0.3
             };
+            var geojsonMarkerOptions = {
+                radius: 8,
+                fillColor: "#ff7800",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };
 
             L.geoJSON(hull, { style: hullStyle }).addTo(map);
-            L.geoJSON(points).addTo(map)
+            L.geoJSON(points, {
+                pointToLayer: function (feature, latlng) {
+                    return L.circleMarker(latlng, geojsonMarkerOptions);
+                }
+            }).addTo(map)
 
             document.getElementById('title').innerHTML = 'Phở in Hà Nội';
             document.getElementById('map').style.visibility = 'visible';
