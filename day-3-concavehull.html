@@ -117,7 +117,7 @@ out geom;
             }
             console.log(points)
 
-            let options = { units: "kilometers", maxEdge: 2 };
+            let options = { units: "kilometers", maxEdge: 3 };
 
             let hull = turf.concave(turf.featureCollection(points), options);
             let map_bound = turf.bbox(turf.lineString(dummy_line))
@@ -136,8 +136,8 @@ out geom;
 
             let hullStyle = {
                 color: "#ff0000",
-                weight:1,
-                fillOpacity: 0.5
+                weight:2,
+                fillOpacity: 0.3
             };
             var geojsonMarkerOptions = {
                 radius: 5,
@@ -145,7 +145,7 @@ out geom;
                 color: "#ff0000",
                 weight: .5,
                 opacity: 1,
-                fillOpacity: 0.3
+                fillOpacity: 0.5
             };
 
             L.geoJSON(hull, { style: hullStyle }).addTo(map);
